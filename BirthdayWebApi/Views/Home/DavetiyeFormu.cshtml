@@ -1,0 +1,35 @@
+﻿ @model BirthdayWebApi.Models.DavetiyeModel
+@{
+    ViewBag.Title = "DavetiyeFormu";
+}
+
+<div class="panel panel-success">
+    <div class="panel-heading">Sende Davetlisin !</div>
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                <label>Ad :</label>
+                @Html.TextBoxFor(x => x.Ad, new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <label>Eposta :</label>
+                @Html.TextBoxFor(x => x.Eposta, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label>Katılacak Mısın ? </label>
+                @Html.DropDownListFor(x => x.KatilmaDurumu, new[] {
+            new SelectListItem(){Text="Evet,Geliyorum.",Value=bool.TrueString},
+            new SelectListItem() {Text="Hayır,Malesef Gelemeyeceğim.",Value=bool.FalseString}}, "Geliyor Musun ?", new
+            {
+                @class = "form-control"
+            })
+            </div>
+
+            <div class="text-center">
+                <input type="submit" value="Gönder" class="btn btn-success" />
+            </div>
+        }
+    </div>
+</div>
